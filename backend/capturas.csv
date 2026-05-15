@@ -1,0 +1,4 @@
+fecha_hora,usuario,correo,nombre,grupo,carrera,ip,password_status,paso
+2026-05-14 21:28:06,8-999-1234,,,,,[::1],NO ALMACENADA,1
+2026-05-14 21:28:06,8-999-1234,est@utp.ac.pa,Maria,1LS121,Sistemas,[::1],NO ALMACENADA,2
+2026-05-14 21:28:33,Prueba,,,,,[::1],NO ALMACENADA,1

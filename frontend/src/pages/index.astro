@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LoginForm from '../components/LoginForm';
+---
+
+<BaseLayout title="WiFi UTP">
+  <div class="login-container">
+    <div class="welcome-text">Bienvenidos</div>
+    <table class="login-table">
+      <tr>
+        <td class="login-left">
+          <LoginForm client:load />
+        </td>
+      </tr>
+    </table>
+  </div>
+</BaseLayout>

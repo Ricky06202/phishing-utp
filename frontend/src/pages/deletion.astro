@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Eliminación de Datos">
+  <div class="login-container" style="text-align:center;">
+    <div style="font-size:72px;margin-bottom:16px;">🗑️</div>
+    <div class="welcome-text" style="font-size:24px;margin-bottom:16px;color:#006633;">
+      DATOS ELIMINADOS
+    </div>
+    <div style="font-size:16px;color:#333;line-height:1.8;text-align:left;max-width:420px;margin:0 auto;">
+      <p>Los datos registrados durante esta simulación <strong>serán eliminados</strong> después de documentar la evidencia del laboratorio.</p>
+      <br/>
+      <p>Ninguna información sensible fue almacenada de forma permanente fuera de este entorno controlado.</p>
+      <br/>
+      <p>Recuerde:</p>
+      <ul style="margin-top:8px;padding-left:20px;">
+        <li>Siempre verifique la URL del sitio antes de ingresar sus datos.</li>
+        <li>No confíe en páginas que no tengan el candado de seguridad (HTTPS).</li>
+        <li>Desconfíe de enlaces recibidos por correo o mensajes no solicitados.</li>
+      </ul>
+      <br/>
+      <p style="font-size:14px;color:#666;">
+        Será redirigido al sitio real de la UTP en unos segundos...
+      </p>
+    </div>
+  </div>
+</BaseLayout>
+<script>
+  setTimeout(() => {
+    window.location.href = 'https://wificrs.utp.ac.pa';
+  }, 8000);
+</script>

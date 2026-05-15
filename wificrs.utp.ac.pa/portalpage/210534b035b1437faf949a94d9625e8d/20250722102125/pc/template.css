@@ -1,0 +1,41 @@
+#turnRegisterBtn {
+	width: 110px;
+	height: 36px;
+	color: #03C5AC;
+	border: 2px solid #03C5AC;
+	font-size: 16px;
+	font-weight: bold;
+	background-color: white;
+}
+
+table td {
+	padding: 0;
+	border: 0;
+	vertical-align: top;
+}
+
+#readmeLink {
+	text-decoration: none;
+	color: #3CBAFF;
+}
+
+#turnBackLink {
+	color: white;
+	font-size: 15px;
+	text-decoration: none;
+	position: absolute;
+	right: 20px;
+	top: 22px;
+}
+
+.success-span {
+	display: block;
+	font-size: 25px;
+	
+	background-color: #03C5AC;
+	color: white;
+	width: 400px;
+	margin: 0 auto;
+	padding: 15px;
+	border-radius: 30px;
+}

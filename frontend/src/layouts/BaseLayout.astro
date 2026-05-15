@@ -1,0 +1,98 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <style is:global>
+    body {
+      font-family: Arial, sans-serif;
+      height: inherit;
+      background-color: #FFFFFF;
+      background-image: url('/fachada_utp.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      color: white;
+      background-color: transparent;
+      align-self: start;
+      padding: 10px;
+    }
+    .logo-left img {
+      background-color: rgba(255, 255, 255, 0.568);
+      border-radius: 100%;
+      z-index: 45;
+      max-width: 100px;
+    }
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.486);
+      backdrop-filter: blur(7px);
+      padding: 40px;
+      border-radius: 10px;
+      margin: 20px auto;
+      max-width: 500px;
+    }
+    .welcome-text {
+      text-align: center;
+      font-size: 40px;
+      font-weight: bold;
+      margin-bottom: 40px;
+      color: #333;
+    }
+    .login-table { width: 100%; margin: 0 auto; }
+    .login-left { width: 50%; padding-right: 40px; }
+    .frm-input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      height: 16px;
+      outline: none;
+    }
+    .button-group {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .frm-button {
+      width: 270px;
+      height: 40px;
+      padding: 0 24px;
+      line-height: 40px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: none;
+      border-radius: 4px;
+      background-color: #681a5d;
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .frm-button:hover { background-color: #02a08b; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-left">
+      <img src="/tropical_utp_logo.jpg" alt="UTP Logo" />
+    </div>
+  </header>
+  <slot />
+</body>
+</html>

@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Simulación de Seguridad">
+  <div class="login-container" style="text-align:center;">
+    <div style="font-size:80px;margin-bottom:20px;">☠️</div>
+    <div class="welcome-text" style="font-size:28px;margin-bottom:20px;">
+      ¡SIMULACIÓN DE PHISHING!
+    </div>
+    <div style="font-size:16px;color:#333;line-height:1.8;text-align:left;max-width:400px;margin:0 auto;">
+      <p><strong>Esto fue un ejercicio académico controlado.</strong></p>
+      <br/>
+      <p>Has sido parte de una simulación de phishing autorizada por tu profesor como parte del curso de ciberseguridad.</p>
+      <br/>
+      <p><strong>Tus datos han sido capturados únicamente para fines educativos</strong> y serán eliminados al finalizar la práctica.</p>
+      <br/>
+      <p>Ninguna información fue compartida ni almacenada fuera del entorno controlado del laboratorio.</p>
+      <br/>
+      <p style="font-size:14px;color:#666;">
+        Serás redirigido al sitio real de la UTP en unos segundos...
+      </p>
+    </div>
+  </div>
+</BaseLayout>
+<script>
+  setTimeout(() => {
+    window.location.href = 'https://wificrs.utp.ac.pa';
+  }, 8000);
+</script>
