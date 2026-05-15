@@ -63,42 +63,62 @@ func main() {
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		path := r.URL.Path
 
-		if path == "/" || path == "" {
-			path = "/index.html"
-		} else if path == "/skull" || path == "/skull.html" {
-			path = "/skull/index.html"
-		} else if path == "/alert" || path == "/alert.html" {
-			path = "/alert/index.html"
-		} else if path == "/deletion" || path == "/deletion.html" {
-			path = "/deletion/index.html"
+		assetExt := false
+		switch {
+		case strings.HasSuffix(path, ".css"),
+			strings.HasSuffix(path, ".js"),
+			strings.HasSuffix(path, ".mjs"),
+			strings.HasSuffix(path, ".jpg"),
+			strings.HasSuffix(path, ".jpeg"),
+			strings.HasSuffix(path, ".png"),
+			strings.HasSuffix(path, ".gif"),
+			strings.HasSuffix(path, ".svg"),
+			strings.HasSuffix(path, ".ico"),
+			strings.HasSuffix(path, ".webp"):
+			assetExt = true
 		}
 
-		data, err := fs.ReadFile(sub, path[1:])
+		if !assetExt {
+			switch path {
+			case "/skull", "/skull.html":
+				path = "/skull/index.html"
+			case "/alert", "/alert.html":
+				path = "/alert/index.html"
+			case "/deletion", "/deletion.html":
+				path = "/deletion/index.html"
+			default:
+				path = "/index.html"
+			}
+		}
+
+		data, err := fs.ReadFile(sub, strings.TrimPrefix(path, "/"))
 		if err != nil {
 			http.NotFound(w, r)
 			return
 		}
 
 		contentType := "text/plain"
-		switch {
-		case strings.HasSuffix(path, ".html"):
+		if strings.HasSuffix(path, ".html") {
 			contentType = "text/html; charset=utf-8"
-		case strings.HasSuffix(path, ".css"):
-			contentType = "text/css"
-		case strings.HasSuffix(path, ".js"), strings.HasSuffix(path, ".mjs"):
-			contentType = "application/javascript"
-		case strings.HasSuffix(path, ".jpg"), strings.HasSuffix(path, ".jpeg"):
-			contentType = "image/jpeg"
-		case strings.HasSuffix(path, ".png"):
-			contentType = "image/png"
-		case strings.HasSuffix(path, ".gif"):
-			contentType = "image/gif"
-		case strings.HasSuffix(path, ".svg"):
-			contentType = "image/svg+xml"
-		case strings.HasSuffix(path, ".ico"):
-			contentType = "image/x-icon"
-		case strings.HasSuffix(path, ".webp"):
-			contentType = "image/webp"
+		} else if assetExt {
+			switch {
+			case strings.HasSuffix(path, ".css"):
+				contentType = "text/css"
+			case strings.HasSuffix(path, ".js"), strings.HasSuffix(path, ".mjs"):
+				contentType = "application/javascript"
+			case strings.HasSuffix(path, ".jpg"), strings.HasSuffix(path, ".jpeg"):
+				contentType = "image/jpeg"
+			case strings.HasSuffix(path, ".png"):
+				contentType = "image/png"
+			case strings.HasSuffix(path, ".gif"):
+				contentType = "image/gif"
+			case strings.HasSuffix(path, ".svg"):
+				contentType = "image/svg+xml"
+			case strings.HasSuffix(path, ".ico"):
+				contentType = "image/x-icon"
+			case strings.HasSuffix(path, ".webp"):
+				contentType = "image/webp"
+			}
 		}
 
 		w.Header().Set("Content-Type", contentType)
